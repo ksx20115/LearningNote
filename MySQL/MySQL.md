@@ -502,6 +502,7 @@ possible_keys: NULL
 
 - `SIMPLE`：简单的`SELECT`查询，查询中不包含子查询或者`UNION `。
 - `PRIMARY`：查询中如果包含任何复杂的子部分，最外层查询则被标记为`PRIMARY`。
+![image](https://user-images.githubusercontent.com/43367531/167806438-b09c08b2-a94f-49c6-9612-196321664026.png)
 - `SUBQUERY`：在`SELECT`或者`WHERE`子句中包含了子查询。
 - `DERIVED`：在`FROM`子句中包含的子查询被标记为`DERIVED(衍生)`，MySQL会递归执行这些子查询，把结果放在临时表中。
 - `UNION`：如果第二个`SELECT`出现在`UNION`之后，则被标记为`UNION`；若`UNION`包含在`FROM`子句的子查询中，外层`SELECT`将被标记为`DERIVED`。
