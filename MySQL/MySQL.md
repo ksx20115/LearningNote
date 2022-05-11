@@ -493,6 +493,7 @@ possible_keys: NULL
 - `id`不同，如果是子查询，id的序号会递增，**id值越大优先级越高，越先被执行。**
 - `id`相同不同，同时存在。**永远是id大的优先级最高，id相等的时候顺序执行。**
 
+![image](https://user-images.githubusercontent.com/43367531/167804253-e8c39804-a1ea-4b99-bef7-291538d4e6b2.png)
 
 
 > select_type
