@@ -520,13 +520,21 @@ possible_keys: NULL
 
 - `system`：表只有一行记录（等于系统表），这是`const`类型的特例，平时不会出现，这个也可以忽略不计。
 - `const`：表示通过索引一次就找到了，`const`用于比较`primary key`或者`unique`索引。因为只匹配一行数据，所以很快。如将主键置于`where`列表中，MySQL就能将该查询转化为一个常量。
+![image](https://user-images.githubusercontent.com/43367531/167978638-93a509f1-9e10-43e8-9ca7-d6140f32c2cf.png)
+
 - `eq_ref`：唯一性索引扫描，读取本表中和关联表表中的每行组合成的一行，查出来只有一条记录。除 了 `system` 和` const` 类型之外, 这是最好的联接类型。
+![image](https://user-images.githubusercontent.com/43367531/167979169-b1afa46b-221e-4385-9681-8581d334ce7b.png)
+
 - `ref`：非唯一性索引扫描，返回本表和关联表某个值匹配的所有行，查出来有多条记录。
+![image](https://user-images.githubusercontent.com/43367531/167979477-9771b124-658e-46a6-9e5f-fdd64c236bc1.png)
+
 - `range`：只检索给定范围的行，一般就是在`WHERE`语句中出现了`BETWEEN`、`< >`、`in`等的查询。这种范围扫描索引比全表扫描要好，因为它只需要开始于索引树的某一点，而结束于另一点，不用扫描全部索引。
+![image](https://user-images.githubusercontent.com/43367531/167979713-2b56dcbe-9577-4f20-85f6-996ede2f35d4.png)
+
 - `index`：`Full Index Scan`，全索引扫描，`index`和`ALL`的区别为`index`类型只遍历索引树。**也就是说虽然`ALL`和`index`都是读全表，但是`index`是从索引中读的，`ALL`是从磁盘中读取的。**
+![image](https://user-images.githubusercontent.com/43367531/167979860-bf2c94ba-d0e9-4329-bc4e-305c843b9e44.png)
 
 - `ALL`：`Full Table Scan`，没有用到索引，全表扫描。
-
 
 
 > possible_keys 和 key
